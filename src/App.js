@@ -4,7 +4,7 @@ import './App.css';
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 //import Image from 'react-bootstrap/lib/Image';
-import Data from '../src/data.json';
+//import Data from '../src/data.json';
 
 class App  extends Component{
   state = {
@@ -13,7 +13,7 @@ all: []
   }
   //
   getleaderboardData(url, stateName) {
-    axios.get('#')
+    axios.get('/leaderboard')
     .then(({ data }) => {
       this.ListeningStateChangedEvent({ [stateName]: data});
       console.log(this.state.all);
