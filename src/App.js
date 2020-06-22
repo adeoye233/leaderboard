@@ -4,17 +4,19 @@ import './App.css';
 import axios from 'axios';
 import Table from 'react-bootstrap/lib/Table';
 import Image from 'react-bootstrap/lib/Image';
+import Data from '../src/data.json';
 
 class App  extends Component{
   state = {
-
+first3: [],
+all: []
   }
   //
   getleaderboardData(url, stateName) {
-    axios.get(url)
+    axios.get('#')
     .then(({ data }) => {
       this.ListeningStateChangedEvent({ [stateName]: data});
-      console.log(this.state);
+      console.log(this.state.all);
     })
   }
   componentDidMount(){
@@ -22,16 +24,14 @@ class App  extends Component{
 
   }
   render(){
-    const{} = this.state;
+    const{first3,all} = this.state;
     return(
       <div className='App'>
         <Table stripped condensed hover bordered className="coloBlack"> 
      <thead>
        <tr>
          <th>#</th>
-         <th>Name</th>
          <th>Slack Name</th>
-         <th>Email</th>
          <th>Points</th>
        </tr>
      </thead>
@@ -39,11 +39,10 @@ class App  extends Component{
        {first3.map((row, index)=> {
          <tr key={row.slackname}>
            <td>{index + 1}</td>
-           <td>{index + 1}</td>
-           <image src = {row.img} className="imageheight" circle/>
-           <td>{index + 1}</td>
-           <td>{index + 1}</td>
-           <td>{index + 1}</td>
+           <td><a href={'../src/data.json${row.slackname}'}>
+             <image src = {row.img} className="imageheight" circle/>{row.slackname}
+             </a></td>
+           <td>{row.slackname}</td>
          </tr>
        })}
      </tbody>
