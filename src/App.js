@@ -12,8 +12,10 @@ class App  extends Component{
   state = {
         scores: []
   }
+
   
  getleaderboardData() {
+
     axios.get('/leaderboard')
     .then(({ data }) => {
      this.setState({scores:data})
