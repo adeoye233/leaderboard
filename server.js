@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 8080;
 //const HOST = '0.0.0.0';
 //const base = '/api'
 
-const routes = require('./api/routes');
+const routes = require('./server/routes');
 routes(app);
 
 //app.listen(PORT, HOST);
