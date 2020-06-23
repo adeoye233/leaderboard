@@ -4,7 +4,7 @@ const service = require('./service');
 
 module.exports = function(app) {
 
-  app.route('leaderboard')
+  app.route('/leaderboard')
   .get(service.getJson);
 
     app.route('*').get((req,res)=>{

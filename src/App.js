@@ -1,40 +1,43 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
+
 //import Image from 'react-bootstrap/lib/Image';
 //import Data from '../src/data.json';
 
 class App  extends Component{
   state = {
-first3: [],
-all: []
+        scores: []
   }
-  //
-  getleaderboardData(url, stateName) {
+
+  
+ getleaderboardData() {
+
     axios.get('/leaderboard')
     .then(({ data }) => {
-      this.ListeningStateChangedEvent({ [stateName]: data});
-      console.log(this.state.all);
+     this.setState({scores:data})
+     
     }).catch(err =>{
       console.log(err);
     })
   }
   componentDidMount(){
-    this.getleaderboardData('');
+    this.getleaderboardData();
 
   }
   render(){
-    const{first3,all} = this.state;
+    const{scores} = this.state;
     const rows = [];
-    first3.map((row, index)=> {
+    scores.map((row, index)=> {
     rows.push(<tr key={row.slackname}>
         <td>{index + 1}</td>
         <td><a href={'../src/data.json${row.slackname}'}>
           <image src = {row.img} className="imageheight" circle/>{row.slackname}
           </a></td>
-        <td>{row.slackname}</td>
+        <td>{row.points}</td>
       </tr>)
     })
     return(

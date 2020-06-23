@@ -10,7 +10,7 @@ const app = express();
 //  parse JSON-encoded bodies and URL-encoded bodies
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(express.static('build'))
 // Constants
 const PORT = process.env.PORT || 8080;
 //const HOST = '0.0.0.0';
